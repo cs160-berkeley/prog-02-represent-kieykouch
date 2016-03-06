@@ -12,6 +12,9 @@ Ki Kouch ([ki.ey.kouch@berkeley.edu](mailto:your_email@berkeley.edu))
 See [Prog 02: Represent] (https://vimeo.com/157888517)
 
 ## Screenshots
+Main screen for mobile, to perform either search by zipcode or current location.<br>
+<img src="screenshots/main.png" height="400" alt="Screenshot"/>
+
 
 <img src="screenshots/Screen Shot 2016-03-05 at 8.24.56 PM.png" height="400" alt="Screenshot"/>
 <br>Result after Shaking and visit email, website, and detail<br>
