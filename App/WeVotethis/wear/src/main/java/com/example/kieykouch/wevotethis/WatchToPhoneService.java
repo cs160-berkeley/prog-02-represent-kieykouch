@@ -75,18 +75,19 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
         final String catName = extras.getString("CAT_NAME");
+
         System.out.println("44444444");
-        // Send the message with the cat name
+                // Send the message with the cat name
         new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //first, connect to the apiclient
-                System.out.println("555555555");
-                mWatchApiClient.connect();
-                //now that you're connected, send a massage with the cat name
-                sendMessage("/" + catName, catName);
-            }
-        }).start();
+                    @Override
+                    public void run() {
+                    //first, connect to the apiclient
+                    System.out.println("555555555");
+                        mWatchApiClient.connect();
+                        //now that you're connected, send a massage with the cat name
+                        sendMessage("/" + catName, catName);
+                    }
+                }).start();
 
         return START_STICKY;
     }

@@ -78,6 +78,9 @@ public class swap2 extends PagerAdapter {
             name.setText("Barak Obama 90%");
             party.setText("Mitt Romney 10%");
             k.setVisibility(View.GONE);
+
+            TextView helloworld = (TextView) item_view.findViewById(R.id.textView3);
+            helloworld.setText("LA County");
         }
 
 

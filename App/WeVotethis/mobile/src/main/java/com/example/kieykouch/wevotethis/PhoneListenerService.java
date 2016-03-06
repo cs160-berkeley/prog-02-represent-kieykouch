@@ -7,6 +7,7 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 /**
  * Created by joleary and noon on 2/19/16 at very late in the night. (early in the morning?)
@@ -26,13 +27,26 @@ private static final String TOAST = "/send_toast";
             System.out.println("22222222222222");
             // Value contains the String we sent over in WatchToPhoneService, "good job"
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
+            System.out.println(value);
 
-            Intent intent = new Intent(this, detail.class );
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("Who", value);
-            Log.d("T", "about to start watch Detail with CAT_NAME: " + value);
-            startActivity(intent);
+            if (!value.equals("Shake")) {
+                Intent intent = new Intent(this, detail.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("Who", value);
+                Log.d("T", "about to start watch Detail with CAT_NAME: " + value);
+                startActivity(intent);
+            }
+            else{
+                Random rand = new Random();
+                int x = rand.nextInt(99999);
+                String y = Integer.toString(x);
 
+                Intent intent = new Intent(this, find_location.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("zip", y);
+                Log.d("T", "about to start watch find_location with CAT_NAME: " + value);
+                startActivity(intent);
+            }
 
             // Make a toast with the String
 //            Context context = getApplicationContext();
@@ -50,7 +64,7 @@ private static final String TOAST = "/send_toast";
 
 
         } else {
-            super.onMessageReceived( messageEvent );
+            super.onMessageReceived(messageEvent);
         }
 
     }

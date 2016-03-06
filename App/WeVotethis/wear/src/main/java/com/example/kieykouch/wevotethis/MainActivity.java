@@ -8,8 +8,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.util.Random;
-
 public class MainActivity extends Activity {
 
     private TextView mTextView;
@@ -17,7 +15,7 @@ public class MainActivity extends Activity {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
-
+    private int kk = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +50,17 @@ public class MainActivity extends Activity {
 
             @Override
             public void onShake(int count) {
-                mTextView.setText("I'm Shaking this");
+                mTextView.setText("I'm Shaking this"+Integer.toString(kk));
 
-                Random rand = new Random();
-                int x = rand.nextInt(99999);
-                
 
+                Intent current1 = new Intent(MainActivity.this, WatchToPhoneService.class);
+                current1.putExtra("CAT_NAME", "Shake");
+                //startActivity(current1);
+                startService(current1);
+
+                Intent current2 = new Intent(MainActivity.this, swap1.class);
+                startActivity(current2);
+                kk++;
             }
         });
 
