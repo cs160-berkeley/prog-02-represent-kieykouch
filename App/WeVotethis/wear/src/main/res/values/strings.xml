@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeVotethis</string>
+    <string name="hello_round">Politicians Watch App</string>
+    <string name="hello_square">Hello Square World!</string>
+</resources>

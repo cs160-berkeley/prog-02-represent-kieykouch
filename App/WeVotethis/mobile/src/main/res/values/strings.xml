@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Politicians</string>
+    <string name="tittle_main">Finding Your Candidate Today !</string>
+    <string name="hint">Enter your zipcode</string>
+    <string name="find">Find</string>
+    <string name="or">Or</string>
+    <string name="title_currentlocation">Use Current Location</string>
+
+
+</resources>
