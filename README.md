@@ -31,6 +31,6 @@ Main screen for mobile, to perform either search by zipcode or current location.
 
 
 ## Acknowledgments
+Catnip from CS160 Sample Project.
+<br>Stackoverflow for Shaking Detection Android.
 
-* Hat tip to anyone who's code was used
-* Any other support
