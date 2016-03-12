@@ -16,9 +16,9 @@ public class Apoliticians {
     private String bioguide_id = "";
     private String twitterid = "";
     private String phone = "";
-    private String tweet;
-    private ArrayList<String> activeComittee;
-    private ArrayList<String> recentBills;
+    private String last_tweet;
+    private ArrayList<String> activeComittee = null;
+    private ArrayList<String> recentBills= null;
 
     public void setGroup(String name, String status, String party, String email, String website, String TermEnd,
                          String bioguide_id, String twitterid, String phone){
@@ -40,8 +40,6 @@ public class Apoliticians {
     public String getPic(){
         return pic;
     }
-
-
     public String getStatus(){
         return status;
     }
@@ -65,5 +63,19 @@ public class Apoliticians {
     }
     public String getPhone(){
         return phone;
+    }
+
+    public ArrayList<String> getActiveComittee(){
+        if (activeComittee != null){
+            return activeComittee;
+        }
+
+        return activeComittee;
+    }
+    public ArrayList<String> getRecentBills(){
+        if (recentBills != null){
+            return recentBills;
+        }
+        return recentBills;
     }
 }
