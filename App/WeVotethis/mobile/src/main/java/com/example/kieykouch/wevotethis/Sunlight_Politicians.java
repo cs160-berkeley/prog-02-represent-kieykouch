@@ -41,7 +41,7 @@ public class Sunlight_Politicians extends AsyncTask<String, Void, String> {
             //urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
-            System.out.println("****");
+            //System.out.println("****");
 
             // Read the input stream into a String
             InputStream inputStream = urlConnection.getInputStream();

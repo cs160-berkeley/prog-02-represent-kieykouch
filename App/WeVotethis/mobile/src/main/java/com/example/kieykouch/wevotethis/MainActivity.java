@@ -10,6 +10,8 @@ import android.widget.EditText;
 import org.json.JSONException;
 
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 final double longitude = location.getLongitude();
 
                 try {
-                    dc.setLongandLati(latitude,longitude);
+                    dc.setLongandLati(latitude, longitude);
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -55,10 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Sunlight_Politicians Request_Po = new Sunlight_Politicians();
-                Request_Po.setData(latitude,longitude);
+                Request_Po.setData(latitude, longitude);
 
                 try {
                     dc.setJSONArray(Request_Po.execute("").get());
+                    Intent current1 = new Intent(MainActivity.this, result_from_current.class);
+                    startActivity(current1);
+
+//                Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+//                sendIntent.putExtra("CAT_NAME", "Current");
+//                startService(sendIntent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -67,13 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Intent current1 = new Intent(MainActivity.this, result.class);
-                current1.putExtra("current", "91234");
-                startActivity(current1);
-
-                Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-                sendIntent.putExtra("CAT_NAME", "Current");
-                startService(sendIntent);
             }
         });
 
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 String myinput = "";
                 myinput = count.getText().toString();
 
-                if (myinput.length() > 0) {
+                if (myinput.length() > 0 && getValidZIP(myinput)) {
 
                     try {
                         dc.setZipCode(myinput);
@@ -99,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
                         dc.setJSONArray(Request_Po.execute("").get());
+                        Intent current1 = new Intent(MainActivity.this, result.class);
+                        current1.putExtra("zip", myinput);
+                        startActivity(current1);
+
+//                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+//                    sendIntent.putExtra("CAT_NAME", myinput);
+//                    startService(sendIntent);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -106,18 +114,11 @@ public class MainActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-                    Intent current1 = new Intent(MainActivity.this, result.class);
-                    current1.putExtra("zip", myinput);
-                    startActivity(current1);
-
-//                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-//                    sendIntent.putExtra("CAT_NAME", myinput);
-//                    startService(sendIntent);
                 }
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -133,5 +134,12 @@ public class MainActivity extends AppCompatActivity {
         location.endUpdates();
 
         super.onPause();
+    }
+
+    private boolean getValidZIP(String zip) {
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(zip);
+        return matcher.matches();
     }
 }

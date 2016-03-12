@@ -118,7 +118,7 @@ public class Apoliticians {
         for(int i = 0; i < repJsonArray.length(); i++){
             JSONObject repObject = (JSONObject)repJsonArray.get(i);
             String committeename = repObject.get("name").toString();
-            System.out.println(committeename);
+            //System.out.println(committeename);
             activeComittee.add(committeename);
         }
     }
@@ -131,7 +131,7 @@ public class Apoliticians {
             JSONObject repObject = (JSONObject)repJsonArray.get(i);
             String introduced_on = repObject.get("introduced_on").toString();
             String official_title = repObject.get("official_title").toString();
-            System.out.println(introduced_on + " "+official_title);
+            //System.out.println(introduced_on + " "+official_title);
             recentBills.add(introduced_on + " " + official_title);
         }
     }

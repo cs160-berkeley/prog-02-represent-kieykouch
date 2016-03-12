@@ -72,6 +72,7 @@ public class Data {
     }
 
     public void setJSONArray(String str) throws JSONException {
+        list_poli =  new ArrayList<Apoliticians>();
         Politicians_Suck = new JSONObject(str);
         JSONArray repJsonArray = Politicians_Suck.getJSONArray("results");
         for(int i = 0; i < repJsonArray.length(); i++){
@@ -101,10 +102,9 @@ public class Data {
             else{
                 party = "Republican";
             }
-            System.out.println(name+chamber+party+email+website+termend+bioguild+twitterid+phone);
+            //System.out.println(name+chamber+party+email+website+termend+bioguild+twitterid+phone);
             r.setGroup(name, chamber, party, email, website, termend, bioguild, twitterid, phone);
             list_poli.add(r);
-
         }
     }
 

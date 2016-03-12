@@ -37,27 +37,19 @@
             </intent-filter>
         </activity>
 
-
-        <activity android:name=".current_location"
-                    android:parentActivityName=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.current_location" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".detail"
-            android:parentActivityName=".current_location">
-            <intent-filter>
-                <action android:name="android.intent.action.detail" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".find_location"
+        <activity android:name=".result_from_current"
             android:parentActivityName=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.find_location" />
+                <action android:name="android.intent.action.result_from_current" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".detail"
+            android:parentActivityName=".result">
+            <intent-filter>
+                <action android:name="android.intent.action.detail" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

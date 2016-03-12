@@ -50,20 +50,28 @@ public class detail extends AppCompatActivity {
         status_detail.setText(currentInfo.getStatus());
         email_detial.setText(currentInfo.getEmail());
         Term_end.setText("Term_end: "+ currentInfo.getTermEnd());
+        Committee = (TextView) findViewById(R.id.textView19);
+        Bills = (TextView) findViewById(R.id.textView13);
 
         if (currentInfo.getParty().equals("Republican")){
             name_detail.setTextColor(Color.parseColor("#0025f6"));
             party_detail.setTextColor(Color.parseColor("#0025f6"));
+            Committee.setTextColor(Color.parseColor("#0025f6"));
+            Bills.setTextColor(Color.parseColor("#0025f6"));
+        }else{
+            name_detail.setTextColor(Color.parseColor("#ff0000"));
+            party_detail.setTextColor(Color.parseColor("#ff0000"));
+            Committee.setTextColor(Color.parseColor("#ff0000"));
+            Bills.setTextColor(Color.parseColor("#ff0000"));
         }
 
-        Committee = (TextView) findViewById(R.id.textView19);
         String mycommiteebaby = "";
         for (String acommitee: currentInfo.getActiveComittee()){
             mycommiteebaby += acommitee + "\n";
         }
         Committee.setText(mycommiteebaby);
 
-        Bills = (TextView) findViewById(R.id.textView13);
+
         String mybillsbaby = "";
         for (String bill: currentInfo.getRecentBills()){
             mybillsbaby += "-" + bill + "\n";

@@ -41,7 +41,7 @@ private static final String TOAST = "/send_toast";
                 int x = rand.nextInt(99999);
                 String y = Integer.toString(x);
 
-                Intent intent = new Intent(this, find_location.class);
+                Intent intent = new Intent(this, result.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("zip", y);
                 Log.d("T", "about to start watch find_location with CAT_NAME: " + value);
