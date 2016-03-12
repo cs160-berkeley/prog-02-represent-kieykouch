@@ -27,6 +27,7 @@ public class find_location extends AppCompatActivity {
     private ImageButton more2;
     private ImageButton more3;
 
+    private  Data dc;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class find_location extends AppCompatActivity {
         zipcode = (TextView) findViewById(R.id.current_location_city);
         zipcode.setText("Zipcode:"+pass);
 
+
+        dc = Data.getInstance();
 
         Email1 = (ImageButton) findViewById(R.id.Email_1);
         Email2 = (ImageButton) findViewById(R.id.Email_2);

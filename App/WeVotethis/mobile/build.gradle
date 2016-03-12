@@ -19,6 +19,10 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
@@ -28,4 +32,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.google.android.gms:play-services-identity:8.4.0'
     compile 'com.google.android.gms:play-services-gcm:8.4.0'
+    compile 'com.google.maps:google-maps-services:0.1.7'
+    compile 'com.google.android.gms:play-services-location:8.1.0'
+
+    compile 'com.google.android.gms:play-services-basement:8.1.0'
 }

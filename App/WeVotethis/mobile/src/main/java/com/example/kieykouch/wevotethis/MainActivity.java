@@ -7,12 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText count;
     private Button Find;
     private Button current;
     private String default_zip = "";
+
+    private SimpleLocation location;
 
 
     @Override
@@ -24,10 +30,45 @@ public class MainActivity extends AppCompatActivity {
         current = (Button) findViewById(R.id.current);
         count = (EditText) findViewById(R.id.gather);
 
+        location = new SimpleLocation(this);
+        if (!location.hasLocationEnabled()) {
+            // ask the user to enable location access
+            SimpleLocation.openSettings(this);
+        }
+
+        final Data dc = Data.getInstance();
+
         current.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent current1 = new Intent(MainActivity.this, current_location.class);
-                current1.putExtra("zip", "91234");
+
+                final double latitude = location.getLatitude();
+                final double longitude = location.getLongitude();
+
+                try {
+                    dc.setLongandLati(latitude,longitude);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Sunlight_Politicians Request_Po = new Sunlight_Politicians();
+                Request_Po.setData(latitude,longitude);
+
+                try {
+                    dc.setJSONArray(Request_Po.execute("").get());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Intent current1 = new Intent(MainActivity.this, result.class);
+                current1.putExtra("current", "91234");
                 startActivity(current1);
 
                 Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
@@ -43,11 +84,32 @@ public class MainActivity extends AppCompatActivity {
                 myinput = count.getText().toString();
 
                 if (myinput.length() > 0) {
-                    Intent current1 = new Intent(MainActivity.this, find_location.class);
-                    System.out.println(myinput);
+
+                    try {
+                        dc.setZipCode(myinput);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Sunlight_Politicians Request_Po = new Sunlight_Politicians();
+                    Request_Po.setData(myinput);
+
+                    try {
+                        dc.setJSONArray(Request_Po.execute("").get());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Intent current1 = new Intent(MainActivity.this, result.class);
                     current1.putExtra("zip", myinput);
                     startActivity(current1);
-
 
                     Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
                     sendIntent.putExtra("CAT_NAME", myinput);
@@ -55,7 +117,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        // make the device update its location
+        location.beginUpdates();
 
+    }
+
+    @Override
+    protected void onPause() {
+        // stop location updates (saves battery)
+        location.endUpdates();
+
+        super.onPause();
     }
 }
