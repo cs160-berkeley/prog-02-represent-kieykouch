@@ -22,6 +22,7 @@ public class Apoliticians {
     private String twitterid = "";
     private String phone = "";
     private String last_tweet;
+    private String photourl = "";
     private ArrayList<String> activeComittee = null;
     private ArrayList<String> recentBills= null;
 
@@ -36,6 +37,7 @@ public class Apoliticians {
         this.bioguide_id = bioguide_id;
         this.twitterid = twitterid;
         this.phone = phone;
+        this.photourl = "https://theunitedstates.io/images/congress/225x275/"+bioguide_id+".jpg";
     }
 
     public String getName(){
@@ -69,7 +71,12 @@ public class Apoliticians {
     public String getPhone(){
         return phone;
     }
-
+    public String getPhotourl(){
+        return photourl;
+    }
+    public String getLast_tweet(){
+        return last_tweet;
+    }
     public ArrayList<String> getActiveComittee() {
         if (activeComittee != null){
             return activeComittee;

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,8 @@ public class result extends AppCompatActivity {
             Data dc = Data.getInstance();
             final Apoliticians currentInfo = dc.getList_poli().get(position);
 
+            final ImageView repImage = (ImageView) itemView.findViewById(R.id.imageView7);
+            repImage.setVisibility(View.GONE);
             ImageButton website1 = (ImageButton) itemView.findViewById(R.id.web_1);
             ImageButton more1 = (ImageButton) itemView.findViewById(R.id.more_1);
 
@@ -120,6 +123,9 @@ public class result extends AppCompatActivity {
                 }
             });
 
+
+            new Photo_politicians((ImageView) repImage).execute(currentInfo.getPhotourl());
+            repImage.setVisibility(View.VISIBLE);
             return itemView;
         }
     }

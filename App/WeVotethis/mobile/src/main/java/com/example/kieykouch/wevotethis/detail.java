@@ -43,8 +43,7 @@ public class detail extends AppCompatActivity {
         dc = Data.getInstance();
         final Apoliticians currentInfo = dc.getList_poli().get(Integer.parseInt(pass));
 
-
-        photo.setImageResource(R.drawable.barbara_boxer);
+        new Photo_politicians((ImageView) photo).execute(currentInfo.getPhotourl());
         name_detail.setText(currentInfo.getName());
         party_detail.setText(currentInfo.getParty());
         status_detail.setText(currentInfo.getStatus());
