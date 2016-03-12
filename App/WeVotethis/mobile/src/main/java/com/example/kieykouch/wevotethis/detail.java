@@ -17,9 +17,11 @@ public class detail extends AppCompatActivity {
     private TextView party_detail;
     private TextView status_detail;
     private TextView email_detial;
-    private TextView phone;
     private TextView Term_end;
+    private Data dc;
 
+    private TextView Committee;
+    private TextView Bills;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,44 +38,36 @@ public class detail extends AppCompatActivity {
         party_detail = (TextView) findViewById(R.id.party_detail);
         status_detail = (TextView) findViewById(R.id.status_detail);
         email_detial = (TextView) findViewById(R.id.email_detial);
-        phone = (TextView) findViewById(R.id.phone);
         Term_end = (TextView) findViewById(R.id.term);
 
+        dc = Data.getInstance();
+        final Apoliticians currentInfo = dc.getList_poli().get(Integer.parseInt(pass));
 
-       if (pass.equals("0")){
-           photo.setImageResource(R.drawable.barbara_boxer);
-           name_detail.setText("Barbara Boxer");
-           party_detail.setText("Democrat");
-           status_detail.setText("Senator");
-           email_detial.setText("Barba@yes.gov");
-           phone.setText("8182112222");
-           Term_end.setText("Term_end 2016");
 
-       }
-       else if (pass.equals("1")) {
-           photo.setImageResource(R.drawable.dianne);
-           name_detail.setText("Dianne Feinstein");
-           party_detail.setText("Republican");
+        photo.setImageResource(R.drawable.barbara_boxer);
+        name_detail.setText(currentInfo.getName());
+        party_detail.setText(currentInfo.getParty());
+        status_detail.setText(currentInfo.getStatus());
+        email_detial.setText(currentInfo.getEmail());
+        Term_end.setText("Term_end: "+ currentInfo.getTermEnd());
 
-           name_detail.setTextColor(Color.parseColor("#0025f6"));
-           party_detail.setTextColor(Color.parseColor("#0025f6"));
+        if (currentInfo.getParty().equals("Republican")){
+            name_detail.setTextColor(Color.parseColor("#0025f6"));
+            party_detail.setTextColor(Color.parseColor("#0025f6"));
+        }
 
-           status_detail.setText("Senator");
-           email_detial.setText("diane@yes.gov");
-           phone.setText("8182112222");
-           Term_end.setText("Term_end 2017");
+        Committee = (TextView) findViewById(R.id.textView19);
+        String mycommiteebaby = "";
+        for (String acommitee: currentInfo.getActiveComittee()){
+            mycommiteebaby += acommitee + "\n";
+        }
+        Committee.setText(mycommiteebaby);
 
-       }
-       else if (pass.equals("2")){
-           photo.setImageResource(R.drawable.brad_sherman);
-           name_detail.setText("Brad Sherman");
-           party_detail.setText("Democrat");
-           status_detail.setText("Rep");
-           email_detial.setText("diane@yes.gov");
-           phone.setText("8182112222");
-           Term_end.setText("Term_end 2017");
-
-       }
-
+        Bills = (TextView) findViewById(R.id.textView13);
+        String mybillsbaby = "";
+        for (String bill: currentInfo.getRecentBills()){
+            mybillsbaby += "-" + bill + "\n";
+        }
+        Bills.setText(mybillsbaby);
     }
 }

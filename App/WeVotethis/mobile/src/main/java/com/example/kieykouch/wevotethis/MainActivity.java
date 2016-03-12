@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                     current1.putExtra("zip", myinput);
                     startActivity(current1);
 
-                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-                    sendIntent.putExtra("CAT_NAME", myinput);
-                    startService(sendIntent);
+//                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+//                    sendIntent.putExtra("CAT_NAME", myinput);
+//                    startService(sendIntent);
                 }
             }
         });

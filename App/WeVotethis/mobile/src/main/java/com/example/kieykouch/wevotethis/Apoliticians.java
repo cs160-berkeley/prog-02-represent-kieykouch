@@ -1,6 +1,11 @@
 package com.example.kieykouch.wevotethis;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by kieykouch on 3/11/16.
@@ -65,9 +70,22 @@ public class Apoliticians {
         return phone;
     }
 
-    public ArrayList<String> getActiveComittee(){
+    public ArrayList<String> getActiveComittee() {
         if (activeComittee != null){
             return activeComittee;
+        }
+
+        activeComittee = new ArrayList<String>();
+        Sunlight_Committee Request_Commite = new Sunlight_Committee();
+
+        try {
+            setJSONArray_Commmite(Request_Commite.execute(bioguide_id).get());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
         return activeComittee;
@@ -76,6 +94,45 @@ public class Apoliticians {
         if (recentBills != null){
             return recentBills;
         }
+
+        recentBills = new ArrayList<String>();
+
+        Sunlight_Bills Request_Bills = new Sunlight_Bills();
+        try {
+            setJSONArray_Bills(Request_Bills.execute(bioguide_id).get());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
         return recentBills;
+    }
+
+    private void setJSONArray_Commmite(String str) throws JSONException {
+        JSONObject AllCommitees = new JSONObject(str);
+        JSONArray repJsonArray = AllCommitees.getJSONArray("results");
+
+        for(int i = 0; i < repJsonArray.length(); i++){
+            JSONObject repObject = (JSONObject)repJsonArray.get(i);
+            String committeename = repObject.get("name").toString();
+            System.out.println(committeename);
+            activeComittee.add(committeename);
+        }
+    }
+
+    private void setJSONArray_Bills(String str) throws JSONException {
+        JSONObject AllCommitees = new JSONObject(str);
+        JSONArray repJsonArray = AllCommitees.getJSONArray("results");
+
+        for(int i = 0; i < repJsonArray.length(); i++){
+            JSONObject repObject = (JSONObject)repJsonArray.get(i);
+            String introduced_on = repObject.get("introduced_on").toString();
+            String official_title = repObject.get("official_title").toString();
+            System.out.println(introduced_on + " "+official_title);
+            recentBills.add(introduced_on + " " + official_title);
+        }
     }
 }
