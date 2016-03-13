@@ -28,13 +28,23 @@ Main screen for mobile, to perform either search by zipcode or current location.
 <img src="screenshots/last%20prog/email.png" height="400" alt="Screenshot"/>
 <img src="screenshots/last%20prog/website.png" height="400" alt="Screenshot"/>
 
-<br> at the meantime, the watch update and slide to the right
+<br> at the meantime, the watch update and slide to the right<br>
 <img src="screenshots/last%20prog/election watch 2.png" height="400" alt="Screenshot"/>
 <img src="screenshots/last%20prog/election watch.png" height="400" alt="Screenshot"/>
 
+<br> using current location, Berkeley, CA <br>
+<img src="screenshots/last%20prog/current location.png" height="400" alt="Screenshot"/>
+<img src="screenshots/last%20prog/result courrent.png" height="400" alt="Screenshot"/>
+<img src="screenshots/last%20prog/election watch 1.png" height="400" alt="Screenshot"/>
 
+<br> Shaking Feature <br>
+<img src="screenshots/last%20prog/shake and random.png" height="400" alt="Screenshot"/>
+<img src="screenshots/last%20prog/display watch.png" height="400" alt="Screenshot"/>
 
 ## Acknowledgments
-Catnip from CS160 Sample Project.
-<br>Stackoverflow for Shaking Detection Android.
+Catnip from CS160 Sample Project for Phone and Watch Services and Listeners.
+<br>Stackoverflow for Shaking Detection Android, Display Image using URL Link, Copy String, and Toast.
+<br>SimpleLocation for Longitude and Latitude from Github
+
+
 
