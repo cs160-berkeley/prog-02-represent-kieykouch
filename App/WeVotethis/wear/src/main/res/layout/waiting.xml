@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kieykouch.wevotethis.MainActivity"
-    tools:deviceIds="wear_round"
     android:background="#8b8b8b">
 
     <TextView
-        android:id="@+id/feed_btn"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/hello_round" />
+        android:text="Waiting After Shake"
+        android:layout_gravity="center_horizontal" />
 </RelativeLayout>

@@ -16,6 +16,9 @@ public class swap1 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swap1);
+
+  //      RelativeLayout mealLayout = (RelativeLayout) findViewById(R.id.frame);
+//        mealLayout.setBackgroundColor(Color.WHITE);
         viewPager = (ViewPager) findViewById(R.id.viewpager22);
         adapter = new swap2(this);
         viewPager.setAdapter(adapter);

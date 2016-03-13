@@ -32,6 +32,16 @@
         </activity>
 
 
+        <activity
+            android:name=".Waiting"
+            >
+            <intent-filter>
+                <action android:name="android.intent.Waiting." />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
         <service android:name=".WatchToPhoneService" />
         <!-- Listeners are special services that need to be declared like below, as BIND_LISTENER -->
@@ -42,6 +52,10 @@
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="fc1af8a1aadd13dd41d7ce0df4948075f2ca5267" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

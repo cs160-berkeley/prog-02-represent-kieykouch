@@ -21,8 +21,9 @@ public class Data {
     private static Double latitude = 0.0;
     private static List<Apoliticians> list_poli = new ArrayList<Apoliticians>();
 
-
     private static JSONObject county = null;
+
+    private static String toWatch = "";
 
     public static Data getInstance(){
         if(mInstance == null){
@@ -75,6 +76,7 @@ public class Data {
         list_poli =  new ArrayList<Apoliticians>();
         Politicians_Suck = new JSONObject(str);
         JSONArray repJsonArray = Politicians_Suck.getJSONArray("results");
+        toWatch = "";
         for(int i = 0; i < repJsonArray.length(); i++){
             JSONObject repObject = (JSONObject)repJsonArray.get(i);
 
@@ -105,11 +107,19 @@ public class Data {
             //System.out.println(name+chamber+party+email+website+termend+bioguild+twitterid+phone);
             r.setGroup(name, chamber, party, email, website, termend, bioguild, twitterid, phone);
             list_poli.add(r);
+            toWatch += name + ",";
+            toWatch += party + ",";
+            toWatch += chamber + ",";
+            toWatch += i + ",";
         }
     }
 
     public static List<Apoliticians> getList_poli(){
         return list_poli;
+    }
+
+    public String getNamewithParty(){
+     return toWatch;
     }
 
 }

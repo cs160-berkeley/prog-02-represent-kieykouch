@@ -26,9 +26,12 @@ public class result extends AppCompatActivity {
     private  Data dc;
     private ArrayList<Apoliticians> all;
     TextView locationx;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result);
+
         locationx = (TextView) findViewById(R.id.current_location_city);
 
         Bundle extras = getIntent().getExtras();
@@ -78,9 +81,18 @@ public class result extends AppCompatActivity {
             TextView twitt = (TextView) itemView.findViewById(R.id.textView25);
             TextView email = (TextView) itemView.findViewById(R.id.email);
 
+
             name.setText(currentInfo.getName());
             party.setText(currentInfo.getParty());
             twitt.setText("");
+
+            String mylasttwitebaby = currentInfo.getLast_tweet();
+            if (mylasttwitebaby.equals("")){
+
+            }
+            else{
+                twitt.setText(mylasttwitebaby);
+            }
 
             if (currentInfo.getParty().equals("Republican")){
                 name.setTextColor(Color.parseColor("#0025f6"));
@@ -122,7 +134,6 @@ public class result extends AppCompatActivity {
                     startActivity(current1);
                 }
             });
-
 
             new Photo_politicians((ImageView) repImage).execute(currentInfo.getPhotourl());
             repImage.setVisibility(View.VISIBLE);

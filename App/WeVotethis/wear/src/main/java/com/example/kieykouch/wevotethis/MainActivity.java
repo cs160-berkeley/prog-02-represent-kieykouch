@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+
     private TextView mTextView;
-    private String catName = "";
+    //private String catName = "";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -24,23 +25,12 @@ public class MainActivity extends Activity {
 
         mTextView =  (TextView) findViewById(R.id.feed_btn);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-
-        if (extras != null) {
-            String catName = extras.getString("CAT_NAME");
-        }
-
-
-//        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-//        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        mShakeDetector = new ShakeDetector();
-//        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
-//            @Override
-//            public void onShake() {
-//                mTextView.setText("I'm Shaking this");
-//            }
-//        });
+//        Intent intent = getIntent();
+//        Bundle extras = intent.getExtras();
+//
+//        if (extras != null) {
+//            String catName = extras.getString("CAT_NAME");
+//        }
 
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -58,9 +48,9 @@ public class MainActivity extends Activity {
                 //startActivity(current1);
                 startService(current1);
 
-                Intent current2 = new Intent(MainActivity.this, swap1.class);
+                Intent current2 = new Intent(MainActivity.this, Waiting.class);
                 startActivity(current2);
-                kk++;
+//                kk++;
             }
         });
 

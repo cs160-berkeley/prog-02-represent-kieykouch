@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 public class WatchListenerService extends WearableListenerService {
     // In PhoneToWatchService, we passed in a path, either "/FRED" or "/LEXY"
     // These paths serve to differentiate different phone-to-watch messages
-    private static final String FRED_FEED = "/Current";
+    private static final String FRED_FEED = "/NameWithParty";
 
 
     @Override
@@ -29,11 +29,9 @@ public class WatchListenerService extends WearableListenerService {
             Intent intent = new Intent(this, swap1.class );
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //you need to add this flag since you're starting a new activity from a service
-            intent.putExtra("CAT_NAME", "Current");
+            //intent.putExtra("CAT_NAME", value);
+            PhoneData.SetupData(value);
             Log.d("T", "about to start watch MainActivity with CAT_NAME: Fred");
-
-            System.out.println("11111111111");
-
             startActivity(intent);
         }
 

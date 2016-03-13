@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
 
         Find = (Button) findViewById(R.id.find);
@@ -104,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
                         current1.putExtra("zip", myinput);
                         startActivity(current1);
 
-//                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-//                    sendIntent.putExtra("CAT_NAME", myinput);
-//                    startService(sendIntent);
+                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+                    sendIntent.putExtra("CAT_NAME", myinput);
+                    startService(sendIntent);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
