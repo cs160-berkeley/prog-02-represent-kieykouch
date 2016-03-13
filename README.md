@@ -8,6 +8,7 @@ This is an application, Andriod and Andriod wear, finding your Senators and Repr
 <br> - 2012 voting data in json
 <br> - Sunlight
 
+<br> Remember: Red for Democrat and Blue for Republican
 ## Authors
 
 Ki Kouch ([ki.ey.kouch@berkeley.edu](mailto:your_email@berkeley.edu))
@@ -19,27 +20,18 @@ See [Prog 02: Represent] (https://vimeo.com/158780432)
 ## Screenshots
 Main screen for mobile, to perform either search by zipcode or current location.<br>
 <img src="screenshots/last%20prog/main phone.png" height="400" alt="Screenshot"/>
-Main screen for watch, to wait for shaking or search from phone<br>
+<br>Main screen for watch, to wait for shaking or search from phone<br>
 <img src="screenshots/last%20prog/main watch.png" height="400" alt="Screenshot"/>
 
-<br>Result after Search and visit email, website, and detail<br>
+<br>Result after Search and clicking on email making a copy and visit a website<br>
 <img src="screenshots/last%20prog/search result.png" height="400" alt="Screenshot"/>
 <img src="screenshots/last%20prog/email.png" height="400" alt="Screenshot"/>
 <img src="screenshots/last%20prog/website.png" height="400" alt="Screenshot"/>
 
+<br> at the meantime, the watch update and slide to the right
+<img src="screenshots/last%20prog/election watch 2.png" height="400" alt="Screenshot"/>
+<img src="screenshots/last%20prog/election watch.png" height="400" alt="Screenshot"/>
 
-
-<br>Result after Shaking and visit email, website, and detail<br>
-<img src="screenshots/Screen Shot 2016-03-05 at 8.25.22 PM.png" height="400" alt="Screenshot"/>
-<img src="screenshots/Screen Shot 2016-03-05 at 8.25.46 PM.png" height="400" alt="Screenshot"/>
-<img src="screenshots/Screen Shot 2016-03-05 at 8.26.08 PM.png" height="400" alt="Screenshot"/>
-
-<br> Republican: display in blue color <br>
-
-<img src="screenshots/Screen Shot 2016-03-05 at 8.26.25 PM.png" height="400" alt="Screenshot"/>
-
-<br> 2012 Electrion Result, Display on Wear <br>
-<img src="screenshots/Screen Shot 2016-03-05 at 8.27.03 PM.png" alt="Screenshot"/>
 
 
 ## Acknowledgments
