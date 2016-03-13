@@ -15,7 +15,7 @@ Ki Kouch ([ki.ey.kouch@berkeley.edu](mailto:your_email@berkeley.edu))
 
 ## Demo Video
 
-See [Prog 02: Represent] (https://vimeo.com/158780432)
+See [Prog 02-C: Represent] (https://vimeo.com/158780432)
 
 ## Screenshots
 Main screen for mobile, to perform either search by zipcode or current location.<br>
