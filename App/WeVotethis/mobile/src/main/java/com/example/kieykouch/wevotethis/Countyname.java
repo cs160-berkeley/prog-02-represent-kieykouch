@@ -72,7 +72,7 @@ public class Countyname extends AsyncTask<String, Void, String> {
                 }
             }
         }
-
+        //System.out.println(forecastJsonStr);
         return forecastJsonStr;
     }
 }

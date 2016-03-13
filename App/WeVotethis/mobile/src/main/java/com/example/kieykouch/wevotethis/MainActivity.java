@@ -22,12 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     private SimpleLocation location;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         Find = (Button) findViewById(R.id.find);
@@ -62,13 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 Request_Po.setData(latitude, longitude);
 
                 try {
+                    Data.loadJSONFromAsset(getApplicationContext());
                     dc.setJSONArray(Request_Po.execute("").get());
+
                     Intent current1 = new Intent(MainActivity.this, result_from_current.class);
                     startActivity(current1);
 
-//                Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-//                sendIntent.putExtra("CAT_NAME", "Current");
-//                startService(sendIntent);
+                    Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+                    sendIntent.putExtra("CAT_NAME", "Current");
+                    startService(sendIntent);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -76,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         });
-
 
         Find.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -101,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
                     Request_Po.setData(myinput);
 
                     try {
+                        Data.loadJSONFromAsset(getApplicationContext());
                         dc.setJSONArray(Request_Po.execute("").get());
+
                         Intent current1 = new Intent(MainActivity.this, result.class);
                         current1.putExtra("zip", myinput);
                         startActivity(current1);

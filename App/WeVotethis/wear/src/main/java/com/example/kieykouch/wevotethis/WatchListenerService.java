@@ -30,6 +30,9 @@ public class WatchListenerService extends WearableListenerService {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //you need to add this flag since you're starting a new activity from a service
             //intent.putExtra("CAT_NAME", value);
+
+            System.out.print(value);
+            System.out.print("****");
             PhoneData.SetupData(value);
             Log.d("T", "about to start watch MainActivity with CAT_NAME: Fred");
             startActivity(intent);

@@ -30,7 +30,7 @@ public class result_from_current extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result);
         locationx = (TextView) findViewById(R.id.current_location_city);
-        locationx.setText("Current Location: Sherman Oaks");
+        locationx.setText(Data.getCityname() + ", "+ Data.getState());
         populateViewList();
     }
 

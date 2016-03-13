@@ -61,7 +61,14 @@ public class PhoneToWatchService extends Service {
                 mApiClient.connect();
                 //now that you're connected, send a massage with the cat name
 
-                sendMessage("/" + "NameWithParty", passing);
+                System.out.println("Boob, "+passing +
+                        ";"+Data.getMycounty()+";"+Data.getState()+";"
+                        +Data.getObama()+";"+Data.getMit());
+
+                sendMessage("/" + "NameWithParty", passing +
+                        ";" + Data.getMycounty() + ";" + Data.getState() + ";"
+                        + Data.getObama() + ";" + Data.getMit());
+
             }
         }).start();
 

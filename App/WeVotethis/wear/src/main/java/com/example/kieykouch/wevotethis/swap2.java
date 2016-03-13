@@ -52,43 +52,51 @@ public class swap2 extends PagerAdapter {
 
         int newindex = position*4;
 
-        name.setText(currentvalue.get(newindex));
-        party.setText(currentvalue.get(newindex+1));
-        status.setText(currentvalue.get(newindex + 2));
+        if (position != PhoneData.count-1) {
+            name.setText(currentvalue.get(newindex));
+            party.setText(currentvalue.get(newindex + 1));
+            status.setText(currentvalue.get(newindex + 2));
 
-        final String currentpositioninarray = currentvalue.get(newindex + 3);
+            final String currentpositioninarray = currentvalue.get(newindex + 3);
 
-        if (currentvalue.get(newindex + 1).equals("Republican")){
-            party.setTextColor(Color.parseColor("#0025f6"));
-            name.setTextColor(Color.parseColor("#0025f6"));
-            status.setTextColor(Color.parseColor("#0025f6"));
-            //flag.setImageResource(R.drawable.repppp);
-        }else{
-            party.setTextColor(Color.parseColor("#ff0000"));
-            name.setTextColor(Color.parseColor("#ff0000"));
-            status.setTextColor(Color.parseColor("#ff0000"));
-            //flag.setImageResource(R.drawable.dooom);
-        }
-
-        k.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent(v.getContext(), WatchToPhoneService.class);
-                sendIntent.putExtra("CAT_NAME", currentpositioninarray);
-                System.out.println("0000000000000000");
-                v.getContext().startService(sendIntent);
+            if (currentvalue.get(newindex + 1).equals("Republican")) {
+                party.setTextColor(Color.parseColor("#0025f6"));
+                name.setTextColor(Color.parseColor("#0025f6"));
+                status.setTextColor(Color.parseColor("#0025f6"));
+                //flag.setImageResource(R.drawable.repppp);
+            } else {
+                party.setTextColor(Color.parseColor("#ff0000"));
+                name.setTextColor(Color.parseColor("#ff0000"));
+                status.setTextColor(Color.parseColor("#ff0000"));
+                //flag.setImageResource(R.drawable.dooom);
             }
-        });
 
-//        else{
-//            status.setText("Election 2012");
-//            name.setText("Barak Obama 90%");
-//            party.setText("Mitt Romney 10%");
-//            k.setVisibility(View.GONE);
-//
-//            TextView helloworld = (TextView) item_view.findViewById(R.id.textView3);
-//            helloworld.setText("LA County");
-//        }
+            k.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent sendIntent = new Intent(v.getContext(), WatchToPhoneService.class);
+                    sendIntent.putExtra("CAT_NAME", currentpositioninarray);
+                    System.out.println("0000000000000000");
+                    v.getContext().startService(sendIntent);
+                }
+            });
+        }
+        else{
+            status.setText("Election 2012");
+            TextView helloworld = (TextView) item_view.findViewById(R.id.textView3);
+            helloworld.setText(currentvalue.get(newindex)+","+currentvalue.get(newindex+1));
+
+            name.setText("Barak Obama "+currentvalue.get(newindex+2)+"%");
+            party.setText("Mitt Romney " + currentvalue.get(newindex + 3) + "%");
+            k.setVisibility(View.GONE);
+
+            status.setTextColor(Color.parseColor("#171717"));
+            helloworld.setTextColor(Color.parseColor("#171717"));
+            name.setTextColor(Color.parseColor("#ff0000"));
+            party.setTextColor(Color.parseColor("#0025f6"));
+
+
+        }
 
         container.addView(item_view);
 

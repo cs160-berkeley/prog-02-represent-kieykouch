@@ -81,6 +81,7 @@ private static final String TOAST = "/send_toast";
             Request_Po.setData(myinput);
 
             try {
+                Data.loadJSONFromAsset(getApplicationContext());
                 dc.setJSONArray(Request_Po.execute("").get());
                 Intent current1 = new Intent(this, result.class);
                 current1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
